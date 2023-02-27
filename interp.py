@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-import os
+import os, shutil
 
 if __name__ == '__main__':
     import argparse
@@ -12,7 +12,9 @@ if __name__ == '__main__':
 
     dir = args.dir
     out_dir = os.path.join(dir, 'out')
-    os.makedirs(out_dir, exist_ok=True)
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+    os.makedirs(out_dir, exist_ok=False)
 
     imgs = []
 
